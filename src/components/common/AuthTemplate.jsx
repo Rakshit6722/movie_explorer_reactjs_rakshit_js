@@ -152,6 +152,9 @@ const AuthTemplate = ({ type }) => {
                     placeholder="Enter mobile number"
                   />
                 </div>
+
+{/* this is test commit */}
+
                 <div className='flex gap-4'>
                   <div className='w-1/2'>
                     <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-white">
