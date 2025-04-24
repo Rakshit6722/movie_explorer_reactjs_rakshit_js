@@ -1,7 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import coverImage from '../../assets/images/coverImage5.jpg'
 
 const AuthTemplate = ({ type }) => {
+
+  const {formData, setFormData} = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    number: '',
+    password: '',
+    confirmpassword: ''
+  })
+
+  const {errors, setErrors} = useState({
+    firstnameError: '',
+    lastnameError: '',
+    emailError: '',
+    numberError: '',
+    passwordError: '',
+    confirmpasswordError: ''
+  })
+
+  const handleChange = (e) => {
+    const {id, value} = e.target
+    setFormData((prev) => (
+      {...prev, [id]: value}
+    ))
+
+    setErrors((prev) => (
+      {...prev, [id + 'Error']: ''}
+    ))
+  }
+
+
+  const handleError = (formData) => {
+    const isValid = true
+  }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log(formData)
+    console.log(errors)
+  }
+
+
+
   return (
     <main className="relative flex flex-col items-center h-screen">
       <div className="absolute inset-0 z-0">
@@ -64,7 +109,7 @@ const AuthTemplate = ({ type }) => {
                       name="firstname"
                       required
                       className="w-full rounded-md border border-white/30 bg-white/10 p-2.5 text-white backdrop-blur-sm placeholder-white/60 focus:border-[#f02c48] focus:outline-none focus:ring-1 focus:ring-[#f02c48]"
-                      placeholder="Enter your first name"
+                      placeholder="Enter first name"
                     />
                   </div>
                   <div className='w-1/2'>
@@ -77,7 +122,7 @@ const AuthTemplate = ({ type }) => {
                       name="lastname"
                       required
                       className="w-full rounded-md border border-white/30 bg-white/10 p-2.5 text-white backdrop-blur-sm placeholder-white/60 focus:border-[#f02c48] focus:outline-none focus:ring-1 focus:ring-[#f02c48]"
-                      placeholder="Enter your last name"
+                      placeholder="Enter last name"
                     />
                   </div>
                 </div>
@@ -104,7 +149,7 @@ const AuthTemplate = ({ type }) => {
                     name="number"
                     required
                     className="w-full rounded-md border border-white/30 bg-white/10 p-2.5 text-white backdrop-blur-sm placeholder-white/60 focus:border-[#f02c48] focus:outline-none focus:ring-1 focus:ring-[#f02c48]"
-                    placeholder="Enter your email"
+                    placeholder="Enter mobile number"
                   />
                 </div>
                 <div className='flex gap-4'>
